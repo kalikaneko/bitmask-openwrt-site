@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sindominio.net/kali/bitmask/sitemap.xml
