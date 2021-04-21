@@ -37,6 +37,8 @@ ssh root@router "sysupgrade $IMG"
 
 And then just sit back and admire the [blinkenlights](https://en.wikipedia.org/wiki/Blinkenlights)...
 
+{{< img src="blinken.jpg" alt="picture of one little router with a masked sticker" class="border-0" >}}
+
 
 ## Go further
 
