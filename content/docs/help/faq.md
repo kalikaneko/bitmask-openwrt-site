@@ -52,7 +52,7 @@ privacy in digital communications and to develop tools that anyone can use. You
 can [join them](https://calyxinstitute.org/membership) - and if you happen to
 live in the US, you might be interested in their [unlimited 4G
 internet](https://calyxinstitute.org/membership/internet) via a device that I'd
-love to support one thay.
+like to support one day.
 
 ## Why did you write this in Nim? Why not just a bunch of config files?
 
