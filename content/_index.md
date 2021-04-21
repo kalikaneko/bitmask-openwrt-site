@@ -1,9 +1,11 @@
 ---
-title : "Modern Documentation Theme"
-description: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
-lead: "Doks is a Hugo theme helping you build modern documentation websites that are secure, fast, and SEO-ready — by default."
+title : "Bitmask for OpenWRT"
+description: "RiseupVPN in your router"
+lead: "RiseupVPN and CalyxVPN, now in a router close to you."
 date: 2020-10-06T08:47:36+00:00
 lastmod: 2020-10-06T08:47:36+00:00
 draft: false
-images: []
+images: [router.jpg]
 ---
+
+{{< img src="router.jpg" alt="A cute router with a bird stickie on it" class="border-0" >}}
