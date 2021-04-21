@@ -33,7 +33,7 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 
 # Footer
-footer = "Powered by a text editor."
+footer = "Powered by a text editor. Ok, and <a href='https://getdoks.org'>doks</a>"
 
 # Alert
 alert = false

@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting 🔧"
+title: "Debug 🔧"
 description: "Solutions to common problems."
 lead: "Solutions to common problems."
 date: 2020-11-12T15:22:20+01:00
@@ -16,9 +16,9 @@ toc: true
 ## Expect it to crash
 
 I'm more or less happy with the status of the current release, and I'm using it
-daily between my laptop and the rest of the world. But I've already seen it
-getting stuck and needing manual intervention: nothing that cannot be solved by
-logging in to the router and restarting the program.
+daily between my laptop and the rest of the world. But I've seen it getting
+stuck and needing manual intervention a couple of times: nothing that cannot be
+solved by logging in to the router and restarting the program.
 
 With the firewall I'm shipping as an example, the VPN fails close, so I'm not
 too worried about risks, but please use it with care.
@@ -39,5 +39,5 @@ You can increase `openvpn` verbosity by passing a higher integer to bitmaskd:
 DEBUG=4 /usr/bin/bitmaskd
 ```
 
-But beware of the huge file in `/tmp/bitmask-openvpn.log`.
+But beware of the huge file in `/tmp/bitmask-openvpn.log` after some time.
 
