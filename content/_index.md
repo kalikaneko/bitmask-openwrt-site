@@ -5,7 +5,7 @@ lead: "RiseupVPN and CalyxVPN, now in a router close to you."
 date: 2020-10-06T08:47:36+00:00
 lastmod: 2020-10-06T08:47:36+00:00
 draft: false
-images: [router.jpg]
+images: [router.png]
 ---
 
-{{< img src="router.jpg" alt="A cute router with a bird stickie on it" class="border-0" >}}
+{{< img src="router.png" alt="A cute router with a bird stickie on it" class="border-0" >}}
