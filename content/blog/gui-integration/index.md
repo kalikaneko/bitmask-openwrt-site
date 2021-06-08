@@ -67,25 +67,23 @@ challenge seemed interesting.
 
 ## Some challenges for a minimalistic UI
 
-I'm not a frontend person, and somehow I've managed to avoid learning modern
-javascript completely. I always relied on quick jQuery for the simple things
-I usually need to do. For this, I wanted to attempt vanilla javascript as long 
-as it wasn't painful. But I also want things to look more or less nice, across
-all kind of devices. This means that I'm willing to compromise some space for
-the promise of a more functional UI, within some limits. That seems to be
-a recurrent dilemma nowadays.
+I'm not a frontend person: I've always relied on jQuery snippets for the simple
+things I usually need to do. That's why I wanted to attempt vanilla javascript
+(*as long as it is not too painful*).
 
-My needs are simple in principle: I wanted to display the gateway selector in
-a map, and give some quick feedback about what's the public IP of the router
-(including where do sites *think* we're connecting from).
+I also like things to look nice, and working on all devices.
 
-To simplify at the beginning, I will ignore permissions, so let's assume that
-this is only for personal routers so that you don't mind getting the interface
-exposed in the lan interface (I will do something about that later on).
+This means that I'm ok to compromise *some* space for the promise of a more
+functional UI. That seems to be a recurrent dilemma nowadays.
 
-I still would like to show the connection status in a public interface, and
-maybe request admin permissions for changing it - that should be delegated to
-luci. So, with these requirements,  I went to the shop looking for tools:
+My needs are simple: display the gateway selector in a map, and give some quick
+feedback about what's the public IP of the router.
+
+To simplify, I will ignore permissions for now. If this is your travel router, I trust
+you to defend your lan port with your whole body if needed. We will
+authenticate when the time comes.
+
+So, let's go shopping:
 
 * A minimalistic css framework: [mini.css](https://minicss.org/) quickly caught
   my eye. Small and looks good. Alas, not maintained anymore, but if it gets the
@@ -95,12 +93,14 @@ luci. So, with these requirements,  I went to the shop looking for tools:
   I think the trade-off still falls on the side of simplicity.
 * For the rest, I decided to write vanilla javascript where possible.
 
-## Optional webui support
+## Build with webui support
 
-Although I got quite frustrated by a crash in [nim's
+I ended up being quite frustrated by a crash in [nim's
 httpx](https://0xacab.org/kali/bitmask-openwrt/-/issues/1) (to be fair, I'm
-pretty sure my use of the threadpool dispatcher has something to do), I'm more
-or less happy with the result so far: all the ui assets together are around 300kB, and
+pretty sure my use of the threadpool dispatcher has something to do)...
+
+On the frontend side, I'm happy with the result so far: all the ui assets
+together are around 300kB, and
 that's including the whole d3.js lib which I think it's going to be very
 useful later on (for instance, I'm thinking on live traffic graphs, if I can
 get my head around the enter/leave d3 syntax). I think that's manageable for
@@ -115,13 +115,17 @@ Nice! Now I can let people build experimental stuff optionally, which will
 probably come handy for more advanced features down the road (obfs4 support,
 for instance).
 
+Config options at build time works, although I should probably
+explore the right mechanism to build different variants (`-base` and `-webui`),
+but let's keep things simple for now.
+
 If you want to try it, run the daemon with:
 
 ```bash
 DEBUG=1 WEBUI_INSECURE=1 bitmaskd
 ```
 
-# Pending stuff
+# Iterating from here
 
 I think this is a good working prototype for the goals I had set. **LuCI
 covers the basics**, and I've got something that more or less shows the relevant
