@@ -5,7 +5,7 @@ lead: "First steps with the project, and plans for development"
 date: "2021-04-10"
 lastmod: "2021-04-10"
 draft: false
-weight: 50
+#weight: 50
 images: ["blinken.jpg"]
 contributors: ["Kali Kaneko"]
 ---

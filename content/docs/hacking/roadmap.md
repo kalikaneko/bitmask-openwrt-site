@@ -65,3 +65,7 @@ toc: true
 ## 0.6.0
 * [ ] use pluggable transports: obfs4 option
 * [ ] diagnose if Tor has a working circuit
+
+## 1.0.0
+* [ ] stable release
+* [ ] distribution of routers with stable image? :)
