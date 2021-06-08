@@ -48,18 +48,20 @@ against a fair distribution of resources (it's fun how anarchist
 discussions permeate technology). This basically means that, as soon as
 [menshen](https://0xacab.org/leap/menshen) is deployed by Riseup, Calyx or any
 others, I want to be able to show load information live next to any widget for
-gateway selection. This is part of a broader usability research what [simply
+gateway selection. This is part of a broader usability research that [simply
 secure](https://simplysecure.org/) has been helping us to do. After the
 findings in that collective process, we're already implementing some changes in
 both [android](https://0xacab.org/leap/bitmask_android) and
 [desktop](https://0xacab.org/leap/bitmask-vpn) clients.
 
 What I wanted is the full web experience, and luci is kind of for power-users
-(although it's super easy to hook yourself with luci, which I probably will
-want to explore further, for things like authentication).
+(although it seems to be quite easy to hook your app against luci, which
+I probably will want to explore further, for things like authentication).
 
 Since I was already using [prologue](https://github.com/planety/Prologue),
-I thought it would be a good idea to ship some simple static files and try my hand with javascript. It's been ages I don't do browser stuff, but the challenge seemed interesting.
+I thought it would be a good idea to start by shipping some simple static files
+and write some bits of javascript. It's been ages I don't do browser stuff, but the
+challenge seemed interesting.
 
 {{< img src="webui.png" alt="bitmaskvpn control panel" caption="<em>The experimental webui, in a rare moment in which it wasn't crashing.</em>" class="border-0" >}}
 
@@ -69,19 +71,21 @@ I'm not a frontend person, and somehow I've managed to avoid learning modern
 javascript completely. I always relied on quick jQuery for the simple things
 I usually need to do. For this, I wanted to attempt vanilla javascript as long 
 as it wasn't painful. But I also want things to look more or less nice, across
-all kind of devices- again, taking into account that I'm not a designer, hehe.
-This means that I'm willing to compromise some space for the promise of more
-functional UI. That seems to be a recurrent dilemma nowadays.
+all kind of devices. This means that I'm willing to compromise some space for
+the promise of a more functional UI, within some limits. That seems to be
+a recurrent dilemma nowadays.
 
 My needs are simple in principle: I wanted to display the gateway selector in
 a map, and give some quick feedback about what's the public IP of the router
-(including where do sites *think* we're connecting from). In principle I'll
-ignore permissions, so let's assume that this is only for personal routers so
-that you don't mind getting the interface exposed in the public UI (and let's
-do something about that later). In a more advanced case, I still would like to
-show the connection status in a public interface, and maybe request admin
-permissions for changing it - that should be delegated to luci. So, with these
-requirements,  I went to the shop looking for tools:
+(including where do sites *think* we're connecting from).
+
+To simplify at the beginning, I will ignore permissions, so let's assume that
+this is only for personal routers so that you don't mind getting the interface
+exposed in the lan interface (I will do something about that later on).
+
+I still would like to show the connection status in a public interface, and
+maybe request admin permissions for changing it - that should be delegated to
+luci. So, with these requirements,  I went to the shop looking for tools:
 
 * A minimalistic css framework: [mini.css](https://minicss.org/) quickly caught
   my eye. Small and looks good. Alas, not maintained anymore, but if it gets the
@@ -97,7 +101,7 @@ Although I got quite frustrated by a crash in [nim's
 httpx](https://0xacab.org/kali/bitmask-openwrt/-/issues/1) (to be fair, I'm
 pretty sure my use of the threadpool dispatcher has something to do), I'm more
 or less happy with the result so far: all the ui assets together are around 300kB, and
-that's including the whole d3 framework which I think it's going to be very
+that's including the whole d3.js lib which I think it's going to be very
 useful later on (for instance, I'm thinking on live traffic graphs, if I can
 get my head around the enter/leave d3 syntax). I think that's manageable for
 all but the most restricted routers - perhaps something even simpler, with no
@@ -124,21 +128,24 @@ covers the basics**, and I've got something that more or less shows the relevant
 information and offers some interactivity.
 
 However, **I need to revisit the whole backend**. It's not ok that concurrent ajax
-requests crash my app, so either I fix that or I change the library I'm using.
-In any case, now that I've decided not to handle openvpn in its own thread,
-everything can be greatly simplified - since I'm already missing the days of
-twisted, I might even give a try to
+requests crash my app (but indeed [it's everybody's responsibility to fix
+faulty commons](https://github.com/dom96/httpbeast/pull/35#issuecomment-722005280)), so
+either I fix that (for which I have to find the underlying reason) or I change
+the library I'm using. In any case, now that I've decided not to handle openvpn
+in its own thread, everything can be greatly simplified. And since I'm already
+missing the days of twisted, I might even give a try to
 [chronos](https://github.com/status-im/nim-chronos), which seems to be getting
-some traction in the nim ecosystem.
+some traction in the nim ecosystem nowadays.
 
 Another thing with a lot of potential for improvement is my usage of
 javascript: I'm already entering callback hell, so I know I need to embrace
 promises. On the other hand, I wonder how well [nim's javascript
 backend](https://nim-lang.org/docs/backends.html#backends-the-javascript-target)
-will work in asynchronous mode. And I also need a sane way of updating
-visual components across the whole app. So I guess my next exploration swill
-dive into getting my crappy prototype into something more production ready,
-either by trying something like [nuxt.js](https://nuxtjs.org/) or by going down
-the nim-to-javascript path.
+will work in asynchronous mode - or rather, how an stupid developer like me
+will get used to work with it. And I also need a sane way of updating
+visual components across the whole app withouth repeating myself. So I guess my
+next exploration swill dive into getting my crappy prototype into something
+more production ready, either by trying something like
+[nuxt.js](https://nuxtjs.org/) or by going down the nim-to-javascript path.
 
 Thanks for reading, and until next time!

@@ -36,6 +36,17 @@ You can get a list of valid locations with:
 curl localhost:8080/locations
 ```
 
+### Use Openvpn Service
+
+Use openvpn service to start and stop the vpn.
+
+```
+useService=True
+```
+
+This is the preferred way. The other option, spawning a tread of our own, will be deprecated soon.
+
+
 ### Change Provider
 
 RiseupVPN is the default and what I'm mostly testing against ([please donate!](https://https://riseup.net/vpn/donate)). You can also use the VPN by [The Calyx Institute](https://calyxinstitute.org/):

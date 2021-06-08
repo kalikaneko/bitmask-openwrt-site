@@ -157,6 +157,31 @@ curl localhost:8080/status
 curl localhost:8080/stop
 ```
 
+### luci support
+
+If you're using `useService=True`, bitmask will write a service file into
+`/etc/openvpn`, enabled by default. With that, you can use `luci-app-openvpn`
+to start and stop the service.
+
+To install the luci app:
+
+```bash
+opkg update
+opkg install luci-app-openvpn
+```
+
+### webui
+
+There's an experimental webui (your package needs to have been built with webui support).
+
+However, it does not any authentication at the moment, so that it exposes the
+vpn control on whatever IP is configured on the lan interface. So please be
+careful if playing with it.
+
+```bash
+DEBUG=1 WEBUI_INSECURE=1 bitmaskd
+```
+
 ## Config
 
 That should be all. You can modify the behaviour changing the [config file→]({{< relref "config" >}})
