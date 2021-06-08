@@ -1,6 +1,6 @@
 ---
 title: "User interfaces"
-description: "new user interfaces"
+description: "luci integration and experimental webui"
 lead: "Controlling the VPN through a web interface"
 date: "2021-06-05"
 lastmod: "2021-06-05"
