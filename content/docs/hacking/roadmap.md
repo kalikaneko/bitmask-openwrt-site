@@ -30,33 +30,38 @@ toc: true
 * [x] ready-to-flash images
 * [x] killswitch: firewall/routing (use /etc/config/firewall)
 * [x] Tor support for initial bootstrap
-* [ ] beryl support
 
 ## 0.2.0
-* [ ] daemonize openvpn
-* [ ] reconnect to openvpn if it crashed
+* [x] luci integration
+* [x] web ui (experimental)
+* [x] use openvpn service
+
+## 0.3.0
+
+* [ ] async nim refactor
+* [ ] webui stability
 * [ ] proper daemon / logs
+* [ ] add password to telnet interface
+
+## 0.4.0
+* [ ] fix metrics for busyBox ping
+* [ ] measure distance to gateways
+* [ ] parse gw protocols (udp/pt)
+* [ ] daemonize openvpn
 * [ ] external watchdog
 * [ ] bitmaskctl util (symlinked to same binary)
 * [ ] cli help 
-* [ ] measure distance to gateways
-* [ ] add password to telnet interface
 * [ ] use unix domain socket for management
 * [ ] init check for running openvpn
-
-## 0.3.0
-* [ ] web interface 
-* [ ] luci integration
-* [ ] parse gw protocols (udp/pt)
-* [ ] fix metrics for busyBox ping
 * [ ] tplink archer support
+* [ ] beryl support
 
-## 0.4.0
+## 0.5.0
 * [ ] use uci config
 * [ ] traffic stats
 * [ ] dockerize image builder
 * [ ] CI integration
 
-## 0.5.0
-* [ ] use pluggable transports
+## 0.6.0
+* [ ] use pluggable transports: obfs4 option
 * [ ] diagnose if Tor has a working circuit
