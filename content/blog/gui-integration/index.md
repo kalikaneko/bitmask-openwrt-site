@@ -37,6 +37,23 @@ things by hand, which is not very user-friendly, but hey, <em>it works</em>.
 
 Well, that was not much fun.
 
+Not only that: the whole point of the work we've been doing in the platform
+side, to do load balancing and direct users to the gateway that is more suited
+to their needs, is to let users choose easily between the "recommended"
+gateway, or a manual override of their choice. Maybe I'm wrong, but I don't
+know any open source vpn package for openwrt that lets you do anything similar.
+
+All this with some caveats, because I wouldn't want user choice to massively play
+against a fair distribution of resources (it's fun how anarchist
+discussions permeate technology). This basically means that, as soon as
+[menshen](https://0xacab.org/leap/menshen) is deployed by Riseup, Calyx or any
+others, I want to be able to show load information live next to any widget for
+gateway selection. This is part of a broader usability research what [simply
+secure](https://simplysecure.org/) has been helping us to do. After the
+findings in that collective process, we're already implementing some changes in
+both [android](https://0xacab.org/leap/bitmask_android) and
+[desktop](https://0xacab.org/leap/bitmask-vpn) clients.
+
 What I wanted is the full web experience, and luci is kind of for power-users
 (although it's super easy to hook yourself with luci, which I probably will
 want to explore further, for things like authentication).
@@ -50,7 +67,7 @@ I thought it would be a good idea to ship some simple static files and try my ha
 
 I'm not a frontend person, and somehow I've managed to avoid learning modern
 javascript completely. I always relied on quick jQuery for the simple things
-I usually need to do. For this, I wanted to attempt vanilla javascript as much
+I usually need to do. For this, I wanted to attempt vanilla javascript as long 
 as it wasn't painful. But I also want things to look more or less nice, across
 all kind of devices- again, taking into account that I'm not a designer, hehe.
 This means that I'm willing to compromise some space for the promise of more
@@ -64,7 +81,7 @@ that you don't mind getting the interface exposed in the public UI (and let's
 do something about that later). In a more advanced case, I still would like to
 show the connection status in a public interface, and maybe request admin
 permissions for changing it - that should be delegated to luci. So, with these
-requirements,  I went to the shop to buy for tools.
+requirements,  I went to the shop looking for tools:
 
 * A minimalistic css framework: [mini.css](https://minicss.org/) quickly caught
   my eye. Small and looks good. Alas, not maintained anymore, but if it gets the
@@ -96,19 +113,22 @@ for instance).
 
 If you want to try it, run the daemon with:
 
+```bash
 DEBUG=1 WEBUI_INSECURE=1 bitmaskd
+```
 
 # Pending stuff
 
-I think this is a good working prototype with the expectations I had. LuCI
-covers the basics, and I've got something that more or less shows the relevant
+I think this is a good working prototype for the goals I had set. **LuCI
+covers the basics**, and I've got something that more or less shows the relevant
 information and offers some interactivity.
 
-However, I need to revisit the whole backend. It's not ok that concurrent ajax
+However, **I need to revisit the whole backend**. It's not ok that concurrent ajax
 requests crash my app, so either I fix that or I change the library I'm using.
 In any case, now that I've decided not to handle openvpn in its own thread,
 everything can be greatly simplified - since I'm already missing the days of
-twisted, I might even give a try to [chronos](https://github.com/status-im/nim-chronos), which seems to be getting
+twisted, I might even give a try to
+[chronos](https://github.com/status-im/nim-chronos), which seems to be getting
 some traction in the nim ecosystem.
 
 Another thing with a lot of potential for improvement is my usage of
@@ -121,4 +141,4 @@ dive into getting my crappy prototype into something more production ready,
 either by trying something like [nuxt.js](https://nuxtjs.org/) or by going down
 the nim-to-javascript path.
 
-Until next time!
+Thanks for reading, and until next time!

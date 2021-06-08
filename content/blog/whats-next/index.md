@@ -32,7 +32,7 @@ at libera.chat, after the whole freenode fiasco).
 
 Happy hacking!
 
-{{< img src="riseup-bird.png" alt="a bird watches you from the command line" caption="<em>It's soothing to be greeted by a bird</em>" class="border-0" >}}
+{{< img src="riseup-bird.png" alt="a bird watches you from the command line" caption="<em>When you're a night owl, it's soothing to be greeted by a bird against a dark background</em>" class="border-0" >}}
 
 
 
